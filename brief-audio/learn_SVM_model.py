@@ -12,8 +12,10 @@ from sklearn import preprocessing
 from sklearn import svm
 import pickle
 from joblib import dump
+from sklearn.model_selection import train_test_split
 from features_functions import compute_features
 import random
+from numpy import inf
 
 ### création des échantillons (aléatoire)
 def create_sample(nb, max_f0):
@@ -58,7 +60,6 @@ for i in range (20):
     file = open("Data/{}".format(FILENAME), 'rb')
     #file = open("Data/{}".format(FILENAME), 'rb')
     input_sig = pickle.load(file)
-
     # Compute the signal in three domains
     sig_sq = input_sig**2
     sig_t = input_sig / np.sqrt(sig_sq.sum())
@@ -68,28 +69,35 @@ for i in range (20):
     # Compute the features and store them
     features_list = []
     N_feat, features_list = compute_features(sig_t, sig_f[:sig_t.shape[0]//2], sig_c[:sig_t.shape[0]//2])
-    features_vector = np.array(features_list)[np.newaxis,:]
-    print("feature " + str(i) + " : ", N_feat)
-    # Store the obtained features in a np.arrays
-    # learningFeatures =  2D np.array with features_vector in it, for each signal
+    features_vector = np.array(features_list)[np.newaxis,:]    
+    features_vector[features_vector == -inf] = 0
+    features_vector[features_vector == inf] = 0
+    features_vector = np.nan_to_num(features_vector, nan=0)
+    features_vector = features_vector.reshape(-1)
+    learningFeatures.append(features_vector)
     
-    learningFeatures = np.append(learningFeatures, features_vector)
-    #learningFeatures.append(features_vector)
-
-    # Store the labels
     learningLabels = labels
 
-print(len(learningFeatures))
-print(learningLabels)
+X_train, X_test, y_train, y_test = train_test_split(learningFeatures, learningLabels, test_size=0.3, random_state=0)
+
 # Encode the class names
-labelEncoder = preprocessing.LabelEncoder().fit(learningLabels)
-learningLabelsStd = labelEncoder.transform(learningLabels)
+
+labelEncoder = preprocessing.LabelEncoder().fit(y_test)
+learningLabelsStd = labelEncoder.transform(y_test)
 
 # Learn the model
 model = svm.SVC(C=10, kernel='linear', class_weight=None, probability=False)
-scaler = preprocessing.StandardScaler(with_mean=True).fit(learningFeatures)
-learningFeatures_scaled = scaler.transform(learningFeatures)
+
+scaler = preprocessing.StandardScaler(with_mean=True).fit(X_test)
+learningFeatures_scaled = scaler.transform(X_test)
+
 model.fit(learningFeatures_scaled, learningLabelsStd)
+
+print("------------------------------------")
+print("Jeux de validation: ", y_test)
+print("Prédiction : ", model.predict(X_test))
+print("Score :" , model.score(X_test, y_test))
+print("------------------------------------")
 
 # Export the scaler and model on disk
 dump(scaler, "SCALER")
