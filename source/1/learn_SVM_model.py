@@ -22,8 +22,8 @@ from numpy import inf
 # La variable max_f0 permet de donner la fréquence max. Par exemple si je met 20000, la valeur
 # sera générée aléatoirement entre en 1 et 20000
 
-nbr_samples = 30
-max_f0 = 20000
+nbr_samples = 10
+max_f0 = 40000
 
 def create_sample(nb, max_f0):
     duree = 2 # Durée en secondes
@@ -57,7 +57,6 @@ def create_sample(nb, max_f0):
     print("------------------------------------")
     print("nb sinus: " + str(sinus), "| nb_ bb : " + str(bb))
     print("------------------------------------")
-    print(label)
     return label
 
 labels = create_sample(nbr_samples, max_f0)
@@ -87,7 +86,6 @@ for i in range (nbr_samples):
     learningFeatures.append(features_vector)
     
     learningLabels = labels
-
 
 X_train, X_test, y_train, y_test = train_test_split(learningFeatures, learningLabels, test_size=0.3, random_state=10)
 

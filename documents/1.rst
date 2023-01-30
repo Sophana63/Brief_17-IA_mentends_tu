@@ -1,0 +1,173 @@
+Sinus ou Bruit blanc?
+=====================
+
+
+1. Module features_functions
+----------------------------
+
+Ce fichier comporte les fonctions permettant de créer des fixtures à partir d'un son.  
+Il a été créé par notre formateur Valentin et n'a pas été touché.
+
+2. module learn_SVM_model 
+-------------------------
+
+**C'est dans ce fichier où se trouve la majeure partie de l'exercice. Le but est de créer un certain nombre de bruit de façon aléatoire.**
+
+1. La création des échantillonsest aléatoire et a 50% de chance d'être sinus ou bruit blanc.
+2. Pour changer le nombre, il suffit juste de d'initialiser la variable nbr_samples au-dessous.
+3. La variable max_f0 permet de donner la fréquence max. Par exemple si je met 20000, la valeur sera générée aléatoirement entre en 1 et 20000.
+
+.. code-block:: bash
+
+   nbr_samples = 30
+   max_f0 = 20000
+   # ici, je veux créer 30 échantillons et un max_fo (Fréquence du sinus) de 20000
+
+----
+
+Maintenant que nous avons le nombre d'échantillons à créer, nous faisons une fonction pour les créer. En même temps, j'initialise un tableau de label que je retourne grâce à la fonction **create_sample()**. 
+
+.. code-block:: bash
+
+   def create_sample(nb, max_f0):
+    duree = 2 # Durée en secondes
+    fe = 44100 # Fréquence d'échatillonnage en Hertz, 44100 est très courant en audio
+    amp = 0.1 # Amplitude en Pascal  
+    sinus = 0
+    bb = 0
+    label = []
+    for i in range (nb):
+        rdm = random.randint(0, 1)   # lancé une pièce au hasard    
+        
+        # si pile (0), création d'un sinus
+        if rdm == 0:
+            f0 = random.randint(1, max_f0) 
+            t = np.arange(0, duree, 1/fe) 
+            sample = amp*np.sin(2*np.pi*f0*t)
+            fichier_sample = open('Data/sample' + str(i), 'wb')
+            pickle.dump(sample, fichier_sample)
+            fichier_sample.close()
+            sinus += 1
+            rdm_array = np.array(rdm)
+            label = np.append(label, rdm_array)            
+        else: # sinon, création d'un bruit blanc
+            sample = amp*np.random.randn(duree*fe)
+            fichier_sample = open('Data/sample' + str(i), 'wb')
+            pickle.dump(sample, fichier_sample)
+            fichier_sample.close()
+            bb += 1
+            rdm_array = np.array(rdm)
+            label = np.append(label, rdm_array) 
+    print("------------------------------------")
+    print("nb sinus: " + str(sinus), "| nb_ bb : " + str(bb))
+    print("------------------------------------")
+    print(label)
+    return label
+
+----
+
+.. code-block:: bash
+
+   # résultat pour 30 échantillons
+   ------------------------------------
+   nb sinus: 13 | nb_ bb : 17
+   ------------------------------------
+
+   # tableau des labels
+   [1. 0. 0. 0. 0. 1. 1. 0. 1. 0. 1. 1. 1. 0. 0. 0. 0. 0. 0. 1. 1. 1. 1. 1. 1. 1. 1. 1. 0. 1.]
+
+Nous utiliserons par la suite une grande partie du code à Valentin pour transformer ces bruits (sinus ou bruit blanc) en valeurs réelles (float) dans un tableau numpy. On alimentera chaque feature dans un tableau nommé **learningFeatures**.
+
+
+.. code-block:: bash
+
+   # LOOP OVER THE SIGNALS
+   learningFeatures = []
+      for i in range (nbr_samples):
+      # Get an input signal
+      ...
+      N_feat, features_list = compute_features(sig_t, sig_f[:sig_t.shape[0]//2], sig_c[:sig_t.shape[0]//2])
+      features_vector = np.array(features_list)[np.newaxis,:]
+      ...
+      learningLabels = ...
+      learningFeatures = ...
+
+----
+
+Là, on coupe nos données et labels en 2 parties: 
+
+1. un jeu pour la validation 
+2. un jeu pour l'entrainement
+
+Souvent, nous prenons 30% des données pour le jeu de validation (test_size=0.3 >>> 30% de données de validation)
+
+.. code-block:: bash
+
+   X_train, X_test, y_train, y_test = train_test_split(learningFeatures, learningLabels, test_size=0.3, random_state=10)
+
+----
+
+Nous allons encoder nos labels pour que la machine puisse comprendre les classes. Par exemple, si nos labels sont des textes, la machine ne comprend pas comment les catégoriser. Nous devrons alors les convertir en nombre.
+
+**Disons que nous 2 classes : sinus et bruit blanc.**
+
+1. pour le sinus, ce label va prendre la valeur 0
+2. pour le bruit blanc, la valeur sera 1
+3. si une autre classe, elle prendra la valeur 2, 3, 4, ect...
+
+.. code-block:: bash
+
+   labelEncoder = preprocessing.LabelEncoder().fit(y_test)
+   learningLabelsStd = labelEncoder.transform(y_test)
+
+----
+
+Nous allons utiliser le modèle SVC (ou Support Vector Classifier). Ce modèle  est un algorithme de machine learning faisant parti de la famille des SVM (Support Vector Machine).
+
+En fait un **SVM est un algorithme utilisant la composante vectorielle des éléments du jeu de données d’apprentissage afin d’en déterminer une orientation préférentielle**. Ainsi selon que l’on se place dans un contexte de régression ou de classification, il va être possible de :  
+
+1. soit définir une droite porté par cette orientation donnée par la composante vectorielle 
+2. soit de construire une droite perpendiculaire à ce même vecteur (et placer à équidistance des ensembles à séparer)
+
+
+.. code-block:: bash
+
+   model = svm.SVC(C=10, kernel='linear', class_weight=None, probability=False)
+
+
+----
+
+Et enfin, on entraine nos données en normalisation les données d'entrainement
+
+.. code-block:: bash
+
+   scaler = preprocessing.StandardScaler(with_mean=True).fit(X_test)
+   learningFeatures_scaled = scaler.transform(X_test)
+   print(learningFeatures_scaled)
+   model.fit(learningFeatures_scaled, learningLabelsStd)
+
+----
+
+.. code-block:: bash
+
+   # résultats de nos prédictions
+   ------------------------------------
+   Jeux de validation:  [1 0 1 0 0 1 0 1 1]
+   Prédiction :  [1 0 1 0 0 1 0 1 1]
+   Score : 1.0
+   ------------------------------------
+
+
+.. automodule:: 1.features_functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+
+.. automodule:: 1.learn_SVM_model
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+

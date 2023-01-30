@@ -1,0 +1,373 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xml:lang="" lang="" version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>1.features_functions &mdash; Documentation Brief Audio 1</title>
+  
+
+  
+
+  
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="../../_static/css/pdj.css" type="text/css" />
+
+  
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css/pdj.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Recherche" href="../../search.html"/>
+    <link rel="top" title="Documentation Brief Audio 1" href="../../index.html"/>
+        <link rel="up" title="Code du module" href="../index.html"/>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="cache-control" content="public" />
+    <meta name="robots" content="follow, all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Add jQuery library -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+  </head>
+
+  <body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="fa fa-home"> Brief Audio </a>
+        <div role="search">
+	  <form id ="rtd-search-form" class="wy-form"
+		action="../../search.html" method="get">
+	    <input type="text" name="q" placeholder="Search docs" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	
+          
+          
+              <p class="caption" role="heading"><span class="caption-text">Contenus:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documents/1.html">Sinus ou Bruit blanc?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../documents/1.html#module-features-functions">1. Module features_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../documents/1.html#module-learn-svm-model">2. module learn_SVM_model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../documents/cars.html">Voitures ou camions ?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../documents/cars.html#introduction">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../documents/cars.html#source">2. Source</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../documents/library.html">Librairies les plus utilisées</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../documents/library.html#numpy">Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../documents/library.html#pickle">Pickle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../documents/library.html#sk-learn">sk-learn</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+
+      </div>
+      &nbsp;
+    </nav>
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      <nav class="wy-nav-top" id="barra-mobile" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="#">Porão do Juca</a>
+      </nav>
+
+      <div class="wy-nav-content">
+	<div class="fundo-claro">
+	</div>
+	<div class="fundo-escuro">
+	</div>
+
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+	    
+	    <!-- <ul class="wy-breadcrumbs"> -->
+	    <!--   <li><a href="#">Docs</a> &raquo;</li> -->
+
+	    <!--   <li>Features</li> -->
+	    <!--   <li class="wy-breadcrumbs-aside"> -->
+
+	    <!-- 	<a href="_sources/index.txt" rel="nofollow"> View page source</a> -->
+
+	    <!--   </li> -->
+	    <!-- </ul> -->
+	    <!-- <hr/> -->
+	  </div>
+
+          <div role="main" class="">
+
+	    <div id="content" class="hfeed entry-container hentry">
+  <h1>Code source de 1.features_functions</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Features functions and definitions</span>
+
+<span class="sd">Created on Mon Oct 24 18:25:32 2022</span>
+
+<span class="sd">@author: ValBaron10</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">inf</span>
+
+<div class="viewcode-block" id="compute_features"><a class="viewcode-back" href="../../documents/1.html#1.features_functions.compute_features">[docs]</a><span class="k">def</span> <span class="nf">compute_features</span><span class="p">(</span><span class="n">sig_t</span><span class="p">,</span> <span class="n">sig_s</span><span class="p">,</span> <span class="n">sig_c</span><span class="p">):</span>
+    
+    <span class="n">feature_functions</span> <span class="o">=</span> <span class="p">[</span><span class="n">min_sig</span><span class="p">,</span>
+                         <span class="n">max_sig</span><span class="p">,</span>
+                         <span class="n">mean_sig</span><span class="p">,</span>
+                         <span class="n">min_mean</span><span class="p">,</span>
+                         <span class="n">max_mean</span><span class="p">,</span>
+                         <span class="n">centroid</span><span class="p">,</span>
+                         <span class="n">RMS_sig</span><span class="p">,</span>
+                         <span class="n">std_sig</span><span class="p">,</span>
+                         <span class="n">mean_skewness</span><span class="p">,</span>
+                         <span class="n">mean_kurtosis</span><span class="p">,</span>
+                         <span class="n">skewness</span><span class="p">,</span>
+                         <span class="n">kurtosis</span><span class="p">,</span>
+                         <span class="n">shannon</span><span class="p">,</span>
+                         <span class="n">renyi</span><span class="p">,</span>
+                         <span class="n">rate_attack</span><span class="p">,</span>
+                         <span class="n">rate_decay</span><span class="p">,</span>
+                         <span class="n">silence_ratio</span><span class="p">,</span>
+                         <span class="n">threshold_crossing_rate</span>
+                         <span class="p">]</span>
+    
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">sig_t</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">51200</span><span class="p">),</span> <span class="n">sig_t</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">feat_temp</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="p">()),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">()),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">()),</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="p">()),</span>
+                 <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="p">(</span><span class="mi">30</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="p">(</span><span class="mi">500</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span>
+                 <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="n">inf</span><span class="p">)),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="n">inf</span><span class="p">)),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="n">inf</span><span class="p">)),</span>
+                 <span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="p">()),</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="p">()),</span> <span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.25</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.75</span><span class="p">,))]</span>
+    
+    <span class="n">freqs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25600</span><span class="p">,</span> <span class="n">sig_s</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="c1"># features spectrals</span>
+    <span class="n">feat_spec</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="p">()),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">()),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="p">()),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">(</span><span class="n">freqs</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="p">(</span><span class="n">freqs</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="p">()),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="p">(</span><span class="n">freqs</span><span class="p">,)),</span>
+                 <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="p">(</span><span class="n">freqs</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">()),</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="p">()),</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="p">(</span><span class="mi">30</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="p">(</span><span class="mi">500</span><span class="p">,)),</span>
+                 <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="n">inf</span><span class="p">)),</span>
+                 <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="n">inf</span><span class="p">)),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="n">inf</span><span class="p">)),</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.05</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,)),</span>
+                 <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.05</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,))]</span>
+    
+    <span class="n">t_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">sig_c</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">51200</span><span class="p">),</span> <span class="n">sig_c</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="c1"># features ceptrals</span>
+    <span class="n">feat_ceps</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="p">()),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">()),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="p">()),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">(</span><span class="n">t_c</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="p">(</span><span class="n">t_c</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="p">()),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="p">(</span><span class="n">t_c</span><span class="p">,)),</span>
+                 <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="p">(</span><span class="n">t_c</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">()),</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="p">()),</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="p">(</span><span class="mi">30</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="p">(</span><span class="mi">500</span><span class="p">,)),</span>
+                 <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="n">inf</span><span class="p">)),</span>
+                 <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="n">inf</span><span class="p">)),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="n">inf</span><span class="p">)),</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="p">()),</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.025</span><span class="p">,)),</span>
+                 <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.05</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.075</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.025</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.05</span><span class="p">,)),</span> <span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.075</span><span class="p">,))]</span>
+    
+    <span class="n">N_feat</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">feat_temp</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">feat_spec</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">feat_ceps</span><span class="p">)</span>
+    
+    <span class="c1"># Compute the features</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">feat_t</span> <span class="ow">in</span> <span class="n">feat_temp</span><span class="p">:</span>
+        <span class="n">features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feature_functions</span><span class="p">[</span><span class="n">feat_t</span><span class="p">[</span><span class="mi">0</span><span class="p">]](</span><span class="n">sig_t</span><span class="p">,</span> <span class="n">feat_t</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        
+    <span class="k">for</span> <span class="n">feat_s</span> <span class="ow">in</span> <span class="n">feat_spec</span><span class="p">:</span>
+        <span class="n">features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feature_functions</span><span class="p">[</span><span class="n">feat_s</span><span class="p">[</span><span class="mi">0</span><span class="p">]](</span><span class="n">sig_s</span><span class="p">,</span> <span class="n">feat_s</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        
+    <span class="k">for</span> <span class="n">feat_c</span> <span class="ow">in</span> <span class="n">feat_ceps</span><span class="p">:</span>
+        <span class="n">features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feature_functions</span><span class="p">[</span><span class="n">feat_c</span><span class="p">[</span><span class="mi">0</span><span class="p">]](</span><span class="n">sig_c</span><span class="p">,</span> <span class="n">feat_c</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    
+    <span class="k">return</span> <span class="n">N_feat</span><span class="p">,</span> <span class="n">features</span></div>
+    
+
+
+<span class="c1"># Features functions    </span>
+<div class="viewcode-block" id="min_sig"><a class="viewcode-back" href="../../documents/1.html#1.features_functions.min_sig">[docs]</a><span class="k">def</span> <span class="nf">min_sig</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="max_sig"><a class="viewcode-back" href="../../documents/1.html#1.features_functions.max_sig">[docs]</a><span class="k">def</span> <span class="nf">max_sig</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="mean_sig"><a class="viewcode-back" href="../../documents/1.html#1.features_functions.mean_sig">[docs]</a><span class="k">def</span> <span class="nf">mean_sig</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="min_mean"><a class="viewcode-back" href="../../documents/1.html#1.features_functions.min_mean">[docs]</a><span class="k">def</span> <span class="nf">min_mean</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="max_mean"><a class="viewcode-back" href="../../documents/1.html#1.features_functions.max_mean">[docs]</a><span class="k">def</span> <span class="nf">max_mean</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="centroid"><a class="viewcode-back" href="../../documents/1.html#1.features_functions.centroid">[docs]</a><span class="k">def</span> <span class="nf">centroid</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="n">sig_sq</span> <span class="o">=</span> <span class="n">signal</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">E</span> <span class="o">=</span> <span class="n">sig_sq</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="n">E</span><span class="o">*</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">sig_sq</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="RMS_sig"><a class="viewcode-back" href="../../documents/1.html#1.features_functions.RMS_sig">[docs]</a><span class="k">def</span> <span class="nf">RMS_sig</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="n">sig_sq</span> <span class="o">=</span> <span class="n">signal</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">E</span> <span class="o">=</span> <span class="n">sig_sq</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">cent</span> <span class="o">=</span> <span class="n">centroid</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">E</span><span class="o">*</span><span class="p">((</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">sig_sq</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">cent</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="std_sig"><a class="viewcode-back" href="../../documents/1.html#1.features_functions.std_sig">[docs]</a><span class="k">def</span> <span class="nf">std_sig</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="mean_skewness"><a class="viewcode-back" href="../../documents/1.html#1.features_functions.mean_skewness">[docs]</a><span class="k">def</span> <span class="nf">mean_skewness</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="n">sig_sq</span> <span class="o">=</span> <span class="n">signal</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">E</span> <span class="o">=</span> <span class="n">sig_sq</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">cent</span> <span class="o">=</span> <span class="n">centroid</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">RMS_sig</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+    <span class="n">sk_sq</span> <span class="o">=</span> <span class="p">((</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">cent</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="n">sig_sq</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="n">E</span><span class="o">*</span><span class="n">B</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">sk_sq</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">sk_sq</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="mean_kurtosis"><a class="viewcode-back" href="../../documents/1.html#1.features_functions.mean_kurtosis">[docs]</a><span class="k">def</span> <span class="nf">mean_kurtosis</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="n">sig_sq</span> <span class="o">=</span> <span class="n">signal</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">E</span> <span class="o">=</span> <span class="n">sig_sq</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">cent</span> <span class="o">=</span> <span class="n">centroid</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">RMS_sig</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(((</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">cent</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span> <span class="o">*</span> <span class="n">sig_sq</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="n">E</span><span class="o">*</span><span class="n">B</span><span class="o">**</span><span class="mi">4</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="skewness"><a class="viewcode-back" href="../../documents/1.html#1.features_functions.skewness">[docs]</a><span class="k">def</span> <span class="nf">skewness</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="n">signal</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(((</span><span class="n">signal</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span><span class="o">/</span><span class="n">sigma</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="kurtosis"><a class="viewcode-back" href="../../documents/1.html#1.features_functions.kurtosis">[docs]</a><span class="k">def</span> <span class="nf">kurtosis</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="n">signal</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(((</span><span class="n">signal</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span><span class="o">/</span><span class="n">sigma</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="shannon"><a class="viewcode-back" href="../../documents/1.html#1.features_functions.shannon">[docs]</a><span class="k">def</span> <span class="nf">shannon</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="n">counts</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">probas</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">signal</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">probas</span> <span class="o">=</span> <span class="n">probas</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">probas</span><span class="p">)]</span>
+    
+    <span class="k">return</span> <span class="o">-</span> <span class="p">(</span><span class="n">probas</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">probas</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="renyi"><a class="viewcode-back" href="../../documents/1.html#1.features_functions.renyi">[docs]</a><span class="k">def</span> <span class="nf">renyi</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="n">counts</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">probas</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">signal</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">probas</span> <span class="o">=</span> <span class="n">probas</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">probas</span><span class="p">)]</span>
+    
+    <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">((</span><span class="n">probas</span><span class="o">**</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+    
+    <span class="k">elif</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">inf</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">probas</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="rate_attack"><a class="viewcode-back" href="../../documents/1.html#1.features_functions.rate_attack">[docs]</a><span class="k">def</span> <span class="nf">rate_attack</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Be careful: I implemented the rate of decay as it is in AAA, but this</span>
+<span class="sd">    implementation is not the same than the one defined in M. Malfante PhD</span>
+<span class="sd">    The difference is that the signal is squared</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">E_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">signal</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">signal</span><span class="o">**</span><span class="mi">2</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="p">(</span><span class="n">signal</span><span class="o">**</span><span class="mi">2</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span> <span class="o">/</span> <span class="n">E_max</span></div>
+
+<div class="viewcode-block" id="rate_decay"><a class="viewcode-back" href="../../documents/1.html#1.features_functions.rate_decay">[docs]</a><span class="k">def</span> <span class="nf">rate_decay</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Be careful: I implemented the rate of decay as it is in AAA, but this</span>
+<span class="sd">    implementation is not the same than the one defined in M. Malfante PhD</span>
+<span class="sd">    The difference is that the signal is squared, and the lowest increasing</span>
+<span class="sd">    slop is taken instead of the highest decreasing one</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">E_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">signal</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">signal</span><span class="o">**</span><span class="mi">2</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="p">(</span><span class="n">signal</span><span class="o">**</span><span class="mi">2</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span> <span class="o">/</span> <span class="n">E_max</span></div>
+
+<div class="viewcode-block" id="silence_ratio"><a class="viewcode-back" href="../../documents/1.html#1.features_functions.silence_ratio">[docs]</a><span class="k">def</span> <span class="nf">silence_ratio</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="n">thresh_sig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">signal</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">signal</span><span class="p">),</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">indexes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">thresh_sig</span> <span class="o">==</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">indexes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">signal</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="threshold_crossing_rate"><a class="viewcode-back" href="../../documents/1.html#1.features_functions.threshold_crossing_rate">[docs]</a><span class="k">def</span> <span class="nf">threshold_crossing_rate</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="n">sig_ctrd</span> <span class="o">=</span> <span class="n">signal</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span> <span class="o">-</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">indexes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">sig_ctrd</span><span class="p">)))[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">indexes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">signal</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+    
+</pre></div>
+
+	    </div>
+            <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2023, Sophana.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/jucacrispim/sphinx_pdj_theme">theme</a> provided by <a href="http://poraodojuca.net">Porão do Juca</a>.
+
+</footer>
+	</div>
+	</div>
+	  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+    <script type="text/javascript" src="../../_static/documentation_options.js">
+
+    </script>
+    <script type="text/javascript" src="../../_static/doctools.js">
+
+    </script>
+    <script type="text/javascript" src="../../_static/sphinx_highlight.js">
+
+    </script>
+    <script type="text/javascript" src="../../_static/translations.js">
+
+    </script>
+
+  
+
+   <script type="text/javascript"
+           src="../../_static/js/theme.js"></script>
+
+   <script type="text/javascript"
+           src="../../_static/js/pdj.js"></script>
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+  </body>
+</html>

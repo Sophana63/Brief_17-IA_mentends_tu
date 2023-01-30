@@ -1,0 +1,441 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xml:lang="" lang="" version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Sinus ou Bruit blanc? &mdash; Documentation Brief Audio 1</title>
+  
+
+  
+
+  
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="../_static/css/pdj.css" type="text/css" />
+
+  
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pdj.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Recherche" href="../search.html"/>
+    <link rel="top" title="Documentation Brief Audio 1" href="../index.html"/>
+        <link rel="next" title="Voitures ou camions ?" href="cars.html"/>
+        <link rel="prev" title="Bienvenue - Brief 17 « IA m’entends-tu ? »" href="../index.html"/>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="cache-control" content="public" />
+    <meta name="robots" content="follow, all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Add jQuery library -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+  </head>
+
+  <body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> Brief Audio </a>
+        <div role="search">
+	  <form id ="rtd-search-form" class="wy-form"
+		action="../search.html" method="get">
+	    <input type="text" name="q" placeholder="Search docs" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	
+          
+          
+              <p class="caption" role="heading"><span class="caption-text">Contenus:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sinus ou Bruit blanc?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-features-functions">1. Module features_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-learn-svm-model">2. module learn_SVM_model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cars.html">Voitures ou camions ?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cars.html#introduction">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cars.html#source">2. Source</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="library.html">Librairies les plus utilisées</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="library.html#numpy">Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library.html#pickle">Pickle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library.html#sk-learn">sk-learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library.html#sphinx">Sphinx</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="keywords.html">Mots Clés</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="keywords.html#la-feature-spectrale">LA FEATURE SPECTRALE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keywords.html#skewness">SKEWNESS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keywords.html#kurtosis">KURTOSIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keywords.html#shannon">SHANNON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keywords.html#renyi">RENYI</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+
+      </div>
+      &nbsp;
+    </nav>
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      <nav class="wy-nav-top" id="barra-mobile" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="#">Porão do Juca</a>
+      </nav>
+
+      <div class="wy-nav-content">
+	<div class="fundo-claro">
+	</div>
+	<div class="fundo-escuro">
+	</div>
+
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+	    
+	    <!-- <ul class="wy-breadcrumbs"> -->
+	    <!--   <li><a href="#">Docs</a> &raquo;</li> -->
+
+	    <!--   <li>Features</li> -->
+	    <!--   <li class="wy-breadcrumbs-aside"> -->
+
+	    <!-- 	<a href="_sources/index.txt" rel="nofollow"> View page source</a> -->
+
+	    <!--   </li> -->
+	    <!-- </ul> -->
+	    <!-- <hr/> -->
+	  </div>
+
+          <div role="main" class="">
+
+	    <div id="content" class="hfeed entry-container hentry">
+  <section id="sinus-ou-bruit-blanc">
+<h1>Sinus ou Bruit blanc?<a class="headerlink" href="#sinus-ou-bruit-blanc" title="Lien permanent vers cette rubrique">¶</a></h1>
+<section id="module-features-functions">
+<h2>1. Module features_functions<a class="headerlink" href="#module-features-functions" title="Lien permanent vers cette rubrique">¶</a></h2>
+<p>Ce fichier comporte les fonctions permettant de créer des fixtures à partir d’un son.
+Il a été créé par notre formateur Valentin et n’a pas été touché.</p>
+</section>
+<section id="module-learn-svm-model">
+<h2>2. module learn_SVM_model<a class="headerlink" href="#module-learn-svm-model" title="Lien permanent vers cette rubrique">¶</a></h2>
+<p><strong>C’est dans ce fichier où se trouve la majeure partie de l’exercice. Le but est de créer un certain nombre de bruit de façon aléatoire.</strong></p>
+<ol class="arabic simple">
+<li><p>La création des échantillonsest aléatoire et a 50% de chance d’être sinus ou bruit blanc.</p></li>
+<li><p>Pour changer le nombre, il suffit juste de d’initialiser la variable nbr_samples au-dessous.</p></li>
+<li><p>La variable max_f0 permet de donner la fréquence max. Par exemple si je met 20000, la valeur sera générée aléatoirement entre en 1 et 20000.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">nbr_samples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">30</span>
+<span class="nv">max_f0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20000</span>
+<span class="c1"># ici, je veux créer 30 échantillons et un max_fo (Fréquence du sinus) de 20000</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>Maintenant que nous avons le nombre d’échantillons à créer, nous faisons une fonction pour les créer. En même temps, j’initialise un tableau de label que je retourne grâce à la fonction <strong>create_sample()</strong>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>def<span class="w"> </span>create_sample<span class="o">(</span>nb,<span class="w"> </span>max_f0<span class="o">)</span>:
+<span class="w"> </span><span class="nv">duree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="c1"># Durée en secondes</span>
+<span class="w"> </span><span class="nv">fe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">44100</span><span class="w"> </span><span class="c1"># Fréquence d&#39;échatillonnage en Hertz, 44100 est très courant en audio</span>
+<span class="w"> </span><span class="nv">amp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.1<span class="w"> </span><span class="c1"># Amplitude en Pascal</span>
+<span class="w"> </span><span class="nv">sinus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+<span class="w"> </span><span class="nv">bb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+<span class="w"> </span><span class="nv">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+<span class="w"> </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>range<span class="w"> </span><span class="o">(</span>nb<span class="o">)</span>:
+<span class="w">     </span><span class="nv">rdm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>random.randint<span class="o">(</span><span class="m">0</span>,<span class="w"> </span><span class="m">1</span><span class="o">)</span><span class="w">   </span><span class="c1"># lancé une pièce au hasard</span>
+
+<span class="w">     </span><span class="c1"># si pile (0), création d&#39;un sinus</span>
+<span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="nv">rdm</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span>:
+<span class="w">         </span><span class="nv">f0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>random.randint<span class="o">(</span><span class="m">1</span>,<span class="w"> </span>max_f0<span class="o">)</span>
+<span class="w">         </span><span class="nv">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>np.arange<span class="o">(</span><span class="m">0</span>,<span class="w"> </span>duree,<span class="w"> </span><span class="m">1</span>/fe<span class="o">)</span>
+<span class="w">         </span><span class="nv">sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>amp*np.sin<span class="o">(</span><span class="m">2</span>*np.pi*f0*t<span class="o">)</span>
+<span class="w">         </span><span class="nv">fichier_sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>open<span class="o">(</span><span class="s1">&#39;Data/sample&#39;</span><span class="w"> </span>+<span class="w"> </span>str<span class="o">(</span>i<span class="o">)</span>,<span class="w"> </span><span class="s1">&#39;wb&#39;</span><span class="o">)</span>
+<span class="w">         </span>pickle.dump<span class="o">(</span>sample,<span class="w"> </span>fichier_sample<span class="o">)</span>
+<span class="w">         </span>fichier_sample.close<span class="o">()</span>
+<span class="w">         </span><span class="nv">sinus</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="m">1</span>
+<span class="w">         </span><span class="nv">rdm_array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>np.array<span class="o">(</span>rdm<span class="o">)</span>
+<span class="w">         </span><span class="nv">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>np.append<span class="o">(</span>label,<span class="w"> </span>rdm_array<span class="o">)</span>
+<span class="w">     </span><span class="k">else</span>:<span class="w"> </span><span class="c1"># sinon, création d&#39;un bruit blanc</span>
+<span class="w">         </span><span class="nv">sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>amp*np.random.randn<span class="o">(</span>duree*fe<span class="o">)</span>
+<span class="w">         </span><span class="nv">fichier_sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>open<span class="o">(</span><span class="s1">&#39;Data/sample&#39;</span><span class="w"> </span>+<span class="w"> </span>str<span class="o">(</span>i<span class="o">)</span>,<span class="w"> </span><span class="s1">&#39;wb&#39;</span><span class="o">)</span>
+<span class="w">         </span>pickle.dump<span class="o">(</span>sample,<span class="w"> </span>fichier_sample<span class="o">)</span>
+<span class="w">         </span>fichier_sample.close<span class="o">()</span>
+<span class="w">         </span><span class="nv">bb</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="m">1</span>
+<span class="w">         </span><span class="nv">rdm_array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>np.array<span class="o">(</span>rdm<span class="o">)</span>
+<span class="w">         </span><span class="nv">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>np.append<span class="o">(</span>label,<span class="w"> </span>rdm_array<span class="o">)</span>
+<span class="w"> </span>print<span class="o">(</span><span class="s2">&quot;------------------------------------&quot;</span><span class="o">)</span>
+<span class="w"> </span>print<span class="o">(</span><span class="s2">&quot;nb sinus: &quot;</span><span class="w"> </span>+<span class="w"> </span>str<span class="o">(</span>sinus<span class="o">)</span>,<span class="w"> </span><span class="s2">&quot;| nb_ bb : &quot;</span><span class="w"> </span>+<span class="w"> </span>str<span class="o">(</span>bb<span class="o">))</span>
+<span class="w"> </span>print<span class="o">(</span><span class="s2">&quot;------------------------------------&quot;</span><span class="o">)</span>
+<span class="w"> </span>print<span class="o">(</span>label<span class="o">)</span>
+<span class="w"> </span><span class="k">return</span><span class="w"> </span>label
+</pre></div>
+</div>
+<hr class="docutils" />
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># résultat pour 30 échantillons</span>
+------------------------------------
+nb<span class="w"> </span>sinus:<span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>nb_<span class="w"> </span>bb<span class="w"> </span>:<span class="w"> </span><span class="m">17</span>
+------------------------------------
+
+<span class="c1"># tableau des labels</span>
+<span class="o">[</span><span class="m">1</span>.<span class="w"> </span><span class="m">0</span>.<span class="w"> </span><span class="m">0</span>.<span class="w"> </span><span class="m">0</span>.<span class="w"> </span><span class="m">0</span>.<span class="w"> </span><span class="m">1</span>.<span class="w"> </span><span class="m">1</span>.<span class="w"> </span><span class="m">0</span>.<span class="w"> </span><span class="m">1</span>.<span class="w"> </span><span class="m">0</span>.<span class="w"> </span><span class="m">1</span>.<span class="w"> </span><span class="m">1</span>.<span class="w"> </span><span class="m">1</span>.<span class="w"> </span><span class="m">0</span>.<span class="w"> </span><span class="m">0</span>.<span class="w"> </span><span class="m">0</span>.<span class="w"> </span><span class="m">0</span>.<span class="w"> </span><span class="m">0</span>.<span class="w"> </span><span class="m">0</span>.<span class="w"> </span><span class="m">1</span>.<span class="w"> </span><span class="m">1</span>.<span class="w"> </span><span class="m">1</span>.<span class="w"> </span><span class="m">1</span>.<span class="w"> </span><span class="m">1</span>.<span class="w"> </span><span class="m">1</span>.<span class="w"> </span><span class="m">1</span>.<span class="w"> </span><span class="m">1</span>.<span class="w"> </span><span class="m">1</span>.<span class="w"> </span><span class="m">0</span>.<span class="w"> </span><span class="m">1</span>.<span class="o">]</span>
+</pre></div>
+</div>
+<p>Nous utiliserons par la suite une grande partie du code à Valentin pour transformer ces bruits (sinus ou bruit blanc) en valeurs réelles (float) dans un tableau numpy. On alimentera chaque feature dans un tableau nommé <strong>learningFeatures</strong>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># LOOP OVER THE SIGNALS</span>
+<span class="nv">learningFeatures</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>range<span class="w"> </span><span class="o">(</span>nbr_samples<span class="o">)</span>:
+<span class="w">   </span><span class="c1"># Get an input signal</span>
+<span class="w">   </span>...
+<span class="w">   </span>N_feat,<span class="w"> </span><span class="nv">features_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>compute_features<span class="o">(</span>sig_t,<span class="w"> </span>sig_f<span class="o">[</span>:sig_t.shape<span class="o">[</span><span class="m">0</span><span class="o">]</span>//2<span class="o">]</span>,<span class="w"> </span>sig_c<span class="o">[</span>:sig_t.shape<span class="o">[</span><span class="m">0</span><span class="o">]</span>//2<span class="o">])</span>
+<span class="w">   </span><span class="nv">features_vector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>np.array<span class="o">(</span>features_list<span class="o">)[</span>np.newaxis,:<span class="o">]</span>
+<span class="w">   </span>...
+<span class="w">   </span><span class="nv">learningLabels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...
+<span class="w">   </span><span class="nv">learningFeatures</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>Là, on coupe nos données et labels en 2 parties:</p>
+<ol class="arabic simple">
+<li><p>un jeu pour la validation</p></li>
+<li><p>un jeu pour l’entrainement</p></li>
+</ol>
+<p>Souvent, nous prenons 30% des données pour le jeu de validation (test_size=0.3 &gt;&gt;&gt; 30% de données de validation)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>X_train,<span class="w"> </span>X_test,<span class="w"> </span>y_train,<span class="w"> </span><span class="nv">y_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>train_test_split<span class="o">(</span>learningFeatures,<span class="w"> </span>learningLabels,<span class="w"> </span><span class="nv">test_size</span><span class="o">=</span><span class="m">0</span>.3,<span class="w"> </span><span class="nv">random_state</span><span class="o">=</span><span class="m">10</span><span class="o">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>Nous allons encoder nos labels pour que la machine puisse comprendre les classes. Par exemple, si nos labels sont des textes, la machine ne comprend pas comment les catégoriser. Nous devrons alors les convertir en nombre.</p>
+<p><strong>Disons que nous 2 classes : sinus et bruit blanc.</strong></p>
+<ol class="arabic simple">
+<li><p>pour le sinus, ce label va prendre la valeur 0</p></li>
+<li><p>pour le bruit blanc, la valeur sera 1</p></li>
+<li><p>si une autre classe, elle prendra la valeur 2, 3, 4, ect…</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">labelEncoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>preprocessing.LabelEncoder<span class="o">()</span>.fit<span class="o">(</span>y_test<span class="o">)</span>
+<span class="nv">learningLabelsStd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>labelEncoder.transform<span class="o">(</span>y_test<span class="o">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>Nous allons utiliser le modèle SVC (ou Support Vector Classifier). Ce modèle  est un algorithme de machine learning faisant parti de la famille des SVM (Support Vector Machine).</p>
+<p>En fait un <strong>SVM est un algorithme utilisant la composante vectorielle des éléments du jeu de données d’apprentissage afin d’en déterminer une orientation préférentielle</strong>. Ainsi selon que l’on se place dans un contexte de régression ou de classification, il va être possible de :</p>
+<ol class="arabic simple">
+<li><p>soit définir une droite porté par cette orientation donnée par la composante vectorielle</p></li>
+<li><p>soit de construire une droite perpendiculaire à ce même vecteur (et placer à équidistance des ensembles à séparer)</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>svm.SVC<span class="o">(</span><span class="nv">C</span><span class="o">=</span><span class="m">10</span>,<span class="w"> </span><span class="nv">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span>,<span class="w"> </span><span class="nv">class_weight</span><span class="o">=</span>None,<span class="w"> </span><span class="nv">probability</span><span class="o">=</span>False<span class="o">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>Et enfin, on entraine nos données en normalisation les données d’entrainement</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">scaler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>preprocessing.StandardScaler<span class="o">(</span><span class="nv">with_mean</span><span class="o">=</span>True<span class="o">)</span>.fit<span class="o">(</span>X_test<span class="o">)</span>
+<span class="nv">learningFeatures_scaled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>scaler.transform<span class="o">(</span>X_test<span class="o">)</span>
+print<span class="o">(</span>learningFeatures_scaled<span class="o">)</span>
+model.fit<span class="o">(</span>learningFeatures_scaled,<span class="w"> </span>learningLabelsStd<span class="o">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># résultats de nos prédictions</span>
+------------------------------------
+Jeux<span class="w"> </span>de<span class="w"> </span>validation:<span class="w">  </span><span class="o">[</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="o">]</span>
+Prédiction<span class="w"> </span>:<span class="w">  </span><span class="o">[</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="o">]</span>
+Score<span class="w"> </span>:<span class="w"> </span><span class="m">1</span>.0
+------------------------------------
+</pre></div>
+</div>
+<span class="target" id="module-1.features_functions"></span><p>Features functions and definitions</p>
+<p>Created on Mon Oct 24 18:25:32 2022</p>
+<p>&#64;author: ValBaron10</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="features_functions.RMS_sig">
+<span class="sig-prename descclassname"><span class="pre">1.features_functions.</span></span><span class="sig-name descname"><span class="pre">RMS_sig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/1/features_functions.html#RMS_sig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#features_functions.RMS_sig" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="features_functions.centroid">
+<span class="sig-prename descclassname"><span class="pre">1.features_functions.</span></span><span class="sig-name descname"><span class="pre">centroid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/1/features_functions.html#centroid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#features_functions.centroid" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="features_functions.compute_features">
+<span class="sig-prename descclassname"><span class="pre">1.features_functions.</span></span><span class="sig-name descname"><span class="pre">compute_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sig_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig_s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig_c</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/1/features_functions.html#compute_features"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#features_functions.compute_features" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="features_functions.kurtosis">
+<span class="sig-prename descclassname"><span class="pre">1.features_functions.</span></span><span class="sig-name descname"><span class="pre">kurtosis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/1/features_functions.html#kurtosis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#features_functions.kurtosis" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="features_functions.max_mean">
+<span class="sig-prename descclassname"><span class="pre">1.features_functions.</span></span><span class="sig-name descname"><span class="pre">max_mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/1/features_functions.html#max_mean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#features_functions.max_mean" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="features_functions.max_sig">
+<span class="sig-prename descclassname"><span class="pre">1.features_functions.</span></span><span class="sig-name descname"><span class="pre">max_sig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/1/features_functions.html#max_sig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#features_functions.max_sig" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="features_functions.mean_kurtosis">
+<span class="sig-prename descclassname"><span class="pre">1.features_functions.</span></span><span class="sig-name descname"><span class="pre">mean_kurtosis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/1/features_functions.html#mean_kurtosis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#features_functions.mean_kurtosis" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="features_functions.mean_sig">
+<span class="sig-prename descclassname"><span class="pre">1.features_functions.</span></span><span class="sig-name descname"><span class="pre">mean_sig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/1/features_functions.html#mean_sig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#features_functions.mean_sig" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="features_functions.mean_skewness">
+<span class="sig-prename descclassname"><span class="pre">1.features_functions.</span></span><span class="sig-name descname"><span class="pre">mean_skewness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/1/features_functions.html#mean_skewness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#features_functions.mean_skewness" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="features_functions.min_mean">
+<span class="sig-prename descclassname"><span class="pre">1.features_functions.</span></span><span class="sig-name descname"><span class="pre">min_mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/1/features_functions.html#min_mean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#features_functions.min_mean" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="features_functions.min_sig">
+<span class="sig-prename descclassname"><span class="pre">1.features_functions.</span></span><span class="sig-name descname"><span class="pre">min_sig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/1/features_functions.html#min_sig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#features_functions.min_sig" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="features_functions.rate_attack">
+<span class="sig-prename descclassname"><span class="pre">1.features_functions.</span></span><span class="sig-name descname"><span class="pre">rate_attack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/1/features_functions.html#rate_attack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#features_functions.rate_attack" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Be careful: I implemented the rate of decay as it is in AAA, but this
+implementation is not the same than the one defined in M. Malfante PhD
+The difference is that the signal is squared</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="features_functions.rate_decay">
+<span class="sig-prename descclassname"><span class="pre">1.features_functions.</span></span><span class="sig-name descname"><span class="pre">rate_decay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/1/features_functions.html#rate_decay"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#features_functions.rate_decay" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Be careful: I implemented the rate of decay as it is in AAA, but this
+implementation is not the same than the one defined in M. Malfante PhD
+The difference is that the signal is squared, and the lowest increasing
+slop is taken instead of the highest decreasing one</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="features_functions.renyi">
+<span class="sig-prename descclassname"><span class="pre">1.features_functions.</span></span><span class="sig-name descname"><span class="pre">renyi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/1/features_functions.html#renyi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#features_functions.renyi" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="features_functions.shannon">
+<span class="sig-prename descclassname"><span class="pre">1.features_functions.</span></span><span class="sig-name descname"><span class="pre">shannon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/1/features_functions.html#shannon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#features_functions.shannon" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="features_functions.silence_ratio">
+<span class="sig-prename descclassname"><span class="pre">1.features_functions.</span></span><span class="sig-name descname"><span class="pre">silence_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/1/features_functions.html#silence_ratio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#features_functions.silence_ratio" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="features_functions.skewness">
+<span class="sig-prename descclassname"><span class="pre">1.features_functions.</span></span><span class="sig-name descname"><span class="pre">skewness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/1/features_functions.html#skewness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#features_functions.skewness" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="features_functions.std_sig">
+<span class="sig-prename descclassname"><span class="pre">1.features_functions.</span></span><span class="sig-name descname"><span class="pre">std_sig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/1/features_functions.html#std_sig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#features_functions.std_sig" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="features_functions.threshold_crossing_rate">
+<span class="sig-prename descclassname"><span class="pre">1.features_functions.</span></span><span class="sig-name descname"><span class="pre">threshold_crossing_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/1/features_functions.html#threshold_crossing_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#features_functions.threshold_crossing_rate" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+
+
+	    </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cars.html" class="btn btn-neutral float-right" title="Voitures ou camions ?">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="Bienvenue - Brief 17 « IA m’entends-tu ? »"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2023, Sophana.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/jucacrispim/sphinx_pdj_theme">theme</a> provided by <a href="http://poraodojuca.net">Porão do Juca</a>.
+
+</footer>
+	</div>
+	</div>
+	  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js">
+
+    </script>
+    <script type="text/javascript" src="../_static/doctools.js">
+
+    </script>
+    <script type="text/javascript" src="../_static/sphinx_highlight.js">
+
+    </script>
+    <script type="text/javascript" src="../_static/translations.js">
+
+    </script>
+
+  
+
+   <script type="text/javascript"
+           src="../_static/js/theme.js"></script>
+
+   <script type="text/javascript"
+           src="../_static/js/pdj.js"></script>
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+  </body>
+</html>
