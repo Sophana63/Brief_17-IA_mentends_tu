@@ -51,3 +51,7 @@ language = 'fr'
 import sphinx_pdj_theme
 html_theme = 'sphinx_pdj_theme'
 html_theme_path = [sphinx_pdj_theme.get_html_theme_path()]
+
+def setup(app):
+    app.add_css_file('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css')
+

@@ -20,8 +20,7 @@ Puis dans un second temps, une base de données de sons beaucoup plus importante
 
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contenus:
+   :maxdepth: 3   
 
    documents/1
    documents/cars
